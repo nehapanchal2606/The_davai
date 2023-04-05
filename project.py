@@ -1,6 +1,6 @@
 from flask import *
 from flask_mysqldb import MySQL
-
+import re
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -12,13 +12,14 @@ mysql = MySQL(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    cursor = mysql.connection.cursor()
     if request.method == 'POST':
-        cursor = mysql.connection.cursor()
+        
         username = request.form.get('username')
         city = request.form.get('city')
-		contact = request.form.get('contact')
-		email = request.form.get('email')
-		password = request.form.get('password')
+        contact = request.form.get('contact')
+        email = request.form.get('email')
+        password = request.form.get('password')
         cursor.execute('INSERT INTO userprofile VALUES (NULL,%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password,))
         mysql.connection.commit()
         cursor.close()
@@ -30,7 +31,7 @@ def index():
 def login():
 	name = ''
 	if request.method == 'POST':
-		
+		cursor = mysql.connection.cursor()
 		username = request.form.get('username')
 		password = request.form.get('password')
 		#print('======>> ',username, password);
@@ -47,7 +48,7 @@ def login():
 			session['username'] = users[1]
 			name = session['username']
 			print("--",name)
-			return render_template('home.html',name=name)
+			return render_template('index.html',name=name)
 		else:
 			msg = 'Incorrect username/password.'
 		
@@ -73,6 +74,7 @@ def register():
 	msg=''
 	
 	if request.method == 'POST':
+		cursor = mysql.connection.cursor()
 		username = request.form.get('username')
 		#birthdate = request.form.get('birthdate')
 		city = request.form.get('city')
@@ -94,7 +96,7 @@ def register():
 			msg = 'Please fill the form.'
 		else:
 			cursor.execute('INSERT INTO user VALUES (NULL,%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password,))
-			conn.commit()
+			cursor.commit()
 			msg = 'Successfully Registered...'
 			return render_template('home.html') 
 
