@@ -12,20 +12,44 @@ mysql = MySQL(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    cursor = mysql.connection.cursor()
-    if request.method == 'POST':
-        
-        username = request.form.get('username')
-        city = request.form.get('city')
-        contact = request.form.get('contact')
-        email = request.form.get('email')
-        password = request.form.get('password')
-        cursor.execute('INSERT INTO user VALUES (%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password))
-        mysql.connection.commit()
-        cursor.close()
-        return 'Data added'
-    
-    return render_template('index.html')
+	cursor = mysql.connection.cursor()
+	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
+		id INT auto_increment,
+		name VARCHAR(255),
+		email VARCHAR(255),	
+		phone VARCHAR(255),
+		appointment_date DATE,
+		morning_desired BOOLEAN,
+		afternoon_desired BOOLEAN,
+		confirmation_requested_by VARCHAR(10),
+		primary key (id)
+	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
+		id INT auto_increment,
+		sale_person_name VARCHAR(255),
+		no_products_sold INT,	
+		sales_department VARCHAR(255),
+		primary key (id)
+	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
+		id INT auto_increment,
+		sale_person_name VARCHAR(255),
+		no_products_sold INT,	
+		sales_department VARCHAR(255),
+		primary key (id)
+	)""")
+	mysql.connection.commit()
+	if request.method == 'POST':
+		username = request.form.get('username')
+		city = request.form.get('city')
+		contact = request.form.get('contact')
+		email = request.form.get('email')
+		password = request.form.get('password')
+		cursor.execute('INSERT INTO user VALUES (%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password))
+		mysql.connection.commit()
+		cursor.close()
+		return 'Data added'
+	return render_template('index.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -68,6 +92,33 @@ def logout():
 	del session['username']
 
 	return redirect('/')
+@app.route('/booking', methods=['GET','POST'])
+def bookingAppointment():
+	cursor = mysql.connection.cursor()
+	if request.method == 'POST':
+		
+		name = request.form.get('name')
+		email = request.form.get('email')
+		phone = request.form.get('phone')
+		appointment_date = request.form.get('Appointmentrequest')
+		morning_desired = request.form.get('Morning desired')
+		afternoon_desired = request.form.get('Afternoon desired')
+		confirmation_requested_by = request.form.get('Confirmation requested by')
+		cursor.execute('INSERT INTO user VALUES (%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password))
+		mysql.connection.commit()
+		cursor.close()
+		return 'Data added'
+
+	return render_template('bookingAppointment.html', msg='')
+
+@app.route('/about', methods=['GET'])
+def aboute():
+	return render_template('about.html', msg='')
+
+@app.route('/contact', methods=['GET','POST'])
+def contact():
+
+	return render_template('contact.html', msg='')
 
 @app.route('/register',methods=['GET','POST'])
 def register():
