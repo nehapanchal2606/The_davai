@@ -181,13 +181,6 @@ def register():
 		msg = 'Please fill!'
 	return render_template('register.html',msg=msg) 
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
 
 @app.route('/doctor')
 def doctor():
@@ -195,7 +188,11 @@ def doctor():
 
 @app.route('/shop')
 def shop():
-    return render_template('shop.html')
+	cursor = mysql.connection.cursor()
+	product_datas = cursor.execute('SELECT * from product')
+	produst_lists = cursor.fetchall()
+	print(produst_lists)
+	return render_template('shop.html', produst_lists = produst_lists)
 
 @app.route('/shop-detail')
 def shop_detail():
