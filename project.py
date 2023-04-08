@@ -24,7 +24,7 @@ def index():
 		confirmation_requested_by VARCHAR(10),
 		primary key (id)
 	)""")
-	cursor.execute("""gsrgtsgtrgsrCREATE TABLE IF NOT EXISTS user (
+	cursor.execute("""CREATE TABLE IF NOT EXISTS user (
 		id INT auto_increment,
 		username VARCHAR(255),
 		city  VARCHAR(255),	
