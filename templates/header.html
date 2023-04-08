@@ -65,9 +65,8 @@
                                     <li><a href="{{ 'register' }}">Register</a></li>
                                     {% endif %}
 
-                                    <li><a href="/about">About Us</a></li>
-                                    <li><a href="/contact">Contact</a></li>
-                                    <li><a href="/contact">FAQ</a></li>
+                                    <li><a href="{{ 'about' }}">About Us</a></li>
+                                    <li><a href="{{ 'contact' }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +82,7 @@
                                 <div class="col-lg-5 d-none d-lg-block">
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
-                                            <li class="active"><a href="index.html">Home</a></li>
+                                            <li class="active"><a href="{{ '/' }}">Home</a></li>
                                             <!-- <li class="menu-item-has-children"><a href="#">Pages</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="about-us.html">About Us</a></li>
@@ -92,13 +91,9 @@
                                                     <li><a href="contact.html">Contact Us</a></li>
                                                 </ul>
                                             </li> -->
-                                            <li class="menu-item-has-children"><a href="shop.html">Shop</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="shop.html">Our Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                </ul>
+                                            <li class="menu-item-has-children"><a href="{{ 'shop' }}">Medicines</a>
                                             </li>
-                                            <li><a href="ask-doctor.html">ASK DOCTOR</a></li>
+                                            <li><a href="{{ 'doctor' }}">ASK DOCTOR</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -117,7 +112,7 @@
                                                 </form>
                                             </li>
                                             <li class="header-user d-none d-md-block">
-                                                <a href="contact.html"><i class="far fa-user"></i></a>
+                                                <a href="{{ 'contact' }}"><i class="far fa-user"></i></a>
                                             </li>
                                             <li class="header-shop-cart d-none d-md-flex">
                                                 <a href="#">
