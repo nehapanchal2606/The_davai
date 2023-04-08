@@ -6,7 +6,7 @@ app.secret_key = 'mysecretkey'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'the_davai_db'
+app.config['MYSQL_DB'] = 'tha_davai_db'
 
 mysql = MySQL(app)
 
@@ -72,7 +72,7 @@ def login():
 			session['username'] = users[1]
 			name = session['username']
 			print("--",name)
-			return render_template('index.html',name=name)
+			return redirect('/')
 		else:
 			msg = 'Incorrect username/password.'
 		
@@ -156,6 +156,25 @@ def register():
 		msg = 'Please fill!'
 	return render_template('register.html',msg=msg) 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/doctor')
+def doctor():
+    return render_template('doctor.html')
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
+
+@app.route('/shop-detail')
+def shop_detail():
+    return render_template('shop-detail.html')
+	
 if __name__ == '__main__':
     app.run(debug=True)
