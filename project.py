@@ -24,20 +24,45 @@ def index():
 		confirmation_requested_by VARCHAR(10),
 		primary key (id)
 	)""")
-	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
+	cursor.execute("""CREATE TABLE IF NOT EXISTS user (
 		id INT auto_increment,
-		sale_person_name VARCHAR(255),
-		no_products_sold INT,	
-		sales_department VARCHAR(255),
+		username VARCHAR(255),
+		city  VARCHAR(255),	
+		contact INT,
+		email VARCHAR(255),
+		password VARCHAR(255),
 		primary key (id)
 	)""")
-	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
+	cursor.execute("""CREATE TABLE IF NOT EXISTS symptoms (
 		id INT auto_increment,
-		sale_person_name VARCHAR(255),
-		no_products_sold INT,	
-		sales_department VARCHAR(255),
+		name VARCHAR(50),
 		primary key (id)
 	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS doctor (
+		id INT auto_increment,
+		name VARCHAR(255),
+		specialist  VARCHAR(255),	
+		experince VARCHAR(255),
+		location VARCHAR(20),
+		degree VARCHAR(20),
+		symptoms_id INT,	
+		available_time DATETIME,
+		primary key (id)
+	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS product (
+		id INT auto_increment,
+		name VARCHAR(50),
+		description VARCHAR(50),
+		price INT,
+		primary key (id)
+	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS cart (
+		id INT auto_increment,
+		pro_id INT,
+		user_id INT,
+		primary key (id)
+	)""")
+	
 	mysql.connection.commit()
 	if request.method == 'POST':
 		username = request.form.get('username')
