@@ -142,29 +142,27 @@
                               <form action="#" class="contact-form" method="post">
                                 <div class="form-grp">
                                     <label for="name">Your Name <span>*</span></label>
-                                    <input type="text" id="name" name="name" placeholder="Jon Deo...">
+                                    <input type="text" id="name" value="{{fetch_user[1]}}" placeholder="Jon Deo...">
                                 </div>
                                 <div class="form-grp">
                                     <label for="email">Your Email <span>*</span></label>
-                                    <input type="text" name="email" id="email" placeholder="info.example@.com">
+                                    <input type="text" id="email" value="{{fetch_user[4]}}" placeholder="info.example@.com">
                                 </div>
                                 <div class="form-grp">
                                     <label for="phone">Your Number <span>*</span></label>
-                                    <input type="tel" id="phone" name="phone" placeholder="">
+                                    <input type="tel" id="phone"  value="{{fetch_user[4]}}" placeholder="">
                                 </div>
                                 <div class="form-grp">
                                   <label for="appointmentDate">Appointment request <span>*</span></label>
-                                  <input type="date" id="appointmentDate" placeholder="" name="appointment_date">
+                                  <input type="date" id="appointmentDate" placeholder="" name="appointment_date" required>
                               </div>
                               <div class="form-grp checkbox-grp">
                                 <label>
-                                  <input type="hidden" name="morning_desired" value="no">
-                                  <input type="checkbox" name="morning_desired" value="yes">
+                                  <input type="checkbox" name="desired" value="Morning" required>
                                   Morning
                                 </label>
                                 <label>
-                                  <input type="hidden" name="afternoon_desired" value="no">
-                                  <input type="checkbox" name="afternoon_desired" value="yes">
+                                  <input type="checkbox" name="desired" value="Afternoon" required>
                                   Afternoon
                                 </label>
                               </div> 
@@ -173,11 +171,11 @@
                               <p>Confirmation requested by</p>
 
                               <label>
-                                <input type="radio" name="confirmation_requested_by" value="email" checked>
+                                <input type="radio" name="confirmation_requested_by" value="email" required>
                                 Email
                               </label>
                               <label>
-                                <input type="radio" name="confirmation_requested_by" value="phone">
+                                <input type="radio" name="confirmation_requested_by" value="phone" required>
                                 Phone call
                               </label>
                               </div>
@@ -185,7 +183,7 @@
                                 <label>
                                     Which procedure do you want to make an appointment for? 
                                 </label><br>
-                                <select id="procedure" name="procedure" class="form-select">
+                                <select id="procedure" name="procedure" class="form-select" required>
                                     <option >Medical Examination</option>
                                     <option>Doctor Check</option>
                                     <option>Result Analysis</option>
@@ -293,7 +291,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="contact.html" class="btn about-btn">Contact Us</a>
+                                    <!-- <a href="contact.html" class="btn about-btn">Contact Us</a> -->
                                 </div>
                             </div>
                         </div>
@@ -335,7 +333,7 @@
                                                 <span>UI | UX Design</span>
                                             </div>
                                         </div>
-                                        <a href="about-us.html" class="btn feedback-btn">Learn More</a>
+                                        <a href="{{ 'about' }}" class="btn feedback-btn">Learn More</a>
                                     </div>
                                     <div class="feedback-img" data-background="{{ url_for('static', filename='img/images/feedback_img.jpg') }}"></div>
                                 </div>

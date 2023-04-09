@@ -60,6 +60,7 @@
                                 <ul>
                                     {% if session['username'] %}
                                     <li><a href="{{ 'logout' }}">Logout</a></li>
+
                                     {% else %}
 
                                     <li><a href="{{ 'login' }}">Login</a></li>
@@ -205,13 +206,13 @@
                             <div class="header-category-wrap">
                                 <div class="header-cat-list">
                                     <ul>
-                                        <li><a href="shop.html">Health Store</a></li>
-                                        <li><a href="shop.html">COLLECTIONS</a></li>
-                                        <li><a href="shop.html">protein Store</a></li>
-                                        <li><a href="shop.html">Pharmacy</a></li>
-                                        <li><a href="shop.html">Tests</a></li>
-                                        <li><a href="shop.html">MedPlus</a></li>
-                                        <li><a href="shop.html">BEAUTY</a></li>
+                                        <li><a href="{{ 'shop' }}">COLLECTIONS</a></li>
+                                        <li><a href="{{ 'shop' }}">Health Store</a></li>
+                                        <li><a href="{{ 'shop' }}">protein Store</a></li>
+                                        <li><a href="{{ 'shop' }}">Pharmacy</a></li>
+                                        <li><a href="{{ 'shop' }}">Tests</a></li>
+                                        <li><a href="{{ 'shop' }}">MedPlus</a></li>
+                                        <li><a href="{{ 'shop' }}">BEAUTY</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -234,12 +235,8 @@
                                 <h4 class="fw-title">Know Us</h4>
                                 <div class="fw-link">
                                     <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                        <li><a href="contact.html">Press Coverage</a></li>
-                                        <li><a href="contact.html">Business Partnership</a></li>
-                                        <li><a href="contact.html">Careers</a></li>
-                                        <li><a href="contact.html">Sehat Ke Sathi</a></li>
+                                        <li><a href="{{ 'about' }}">About Us</a></li>
+                                        <li><a href="{{ 'contact' }}">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -271,22 +268,6 @@
                                         <li><a href="contact.html">English Articles</a></li>
                                         <li><a href="contact.html">1mg Care Plan</a></li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                            <div class="footer-widget">
-                                <h4 class="fw-title">Subscribe Our Newsletter</h4>
-                                <div class="f-newsletter">
-                                    <p>Get a free subscription to our health & fitness</p>
-                                    <form action="#" class="newsletter-form">
-                                        <input type="text" placeholder="Enter Your Email Address">
-                                        <button><i class="fas fa-rocket"></i></button>
-                                    </form>
-                                </div>
-                                <div class="fw-download-btn">
-                                    <a href="#"><img src="{{ url_for('static', filename='img/icon/download_btn01.png') }}" alt=""></a>
-                                    <a href="#"><img src="{{ url_for('static', filename='img/icon/download_btn02.png') }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -329,12 +310,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="copyright-text">
-                                <p>Copyright © 20221 Yed. All Rights Reserved</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="payment-method-img text-center text-md-right">
-                                <img src="{{ url_for('static', filename='img/images/card.png') }}" alt="">
+                                <p>Copyright © 2023. All Rights Reserved</p>
                             </div>
                         </div>
                     </div>
