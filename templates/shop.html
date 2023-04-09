@@ -21,13 +21,10 @@
                     </div>
                 </div>
             </div>
-            <!-- breadcrumb-area-end -->
-
-            <!-- shop-area -->
             <div class="shop-area shop-inner-page pt-100 pb-100">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-3 order-2 order-lg-0">
+                        <!-- <div class="col-3 order-2 order-lg-0">
                             <aside class="shop-sidebar">
                                 <div class="widget">
                                     <div class="sidebar-search">
@@ -36,21 +33,9 @@
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </div>
-                                </div>
-                                <div class="widget">
-                                    <h4 class="sidebar-title">Category</h4>
-                                    <div class="shop-cat-list">
-                                        <ul>
-                                            <li><a href="shop.html">Medication <span>+</span></a></li>
-                                            <li><a href="shop.html">Disposable <span>+</span></a></li>
-                                            <li><a href="shop.html">PPE-Kit <span>+</span></a></li>
-                                            <li><a href="shop.html">Face-Mask <span>+</span></a></li>
-                                            <li><a href="shop.html">Safety-Suits <span>+</span></a></li>
-                                            <li><a href="shop.html">Eye-Protect <span>+</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="widget">
+                                </div> -->
+                                
+                                <!-- <div class="widget">
                                     <h4 class="sidebar-title">Top Brand</h4>
                                     <div class="shop-brand-list">
                                         <ul>
@@ -75,9 +60,9 @@
                                 </div>
                                 <div class="widget shop-widget-banner">
                                     <a href="shop.html"><img src="{{ url_for('static', filename='img/products/shop_add.jpg') }}" alt=""></a>
-                                </div>
-                            </aside>
-                        </div>
+                                </div> -->
+                            <!-- </aside>
+                        </div> -->
                         <div class="col-9">
                             <div class="shop-wrap">
                                 <h4 class="title">Shop</h4>
@@ -122,11 +107,11 @@
                                         <div class="shop-item mb-45">
                                             
                                             <div class="shop-thumb">
-                                                <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img01.jpg') }}" alt=""></a>
+                                                <a href="{{ 'shop-detail/' }}{{produst_list[0]}}"><img src="{{ url_for('static', filename='img/products/shop_img01.jpg') }}" alt=""></a>
                                             </div>
                                             <div class="shop-content">
                                                 <span class="cat">Sanitizers</span>
-                                                <h5 class="title"><a href="{{ url_for('shop-details', id=produst_list[0]) }}">{{produst_list[1]}}</a></h5>
+                                                <h5 class="title"><a href="#">{{produst_list[1]}}</a></h5>
                                                 <div class="shop-item-rating">
                                                     <span class="avg-rating"> 3.2 <i class="far fa-star"></i></span>
                                                     <span class="total-rating">349 Ratings</span>
@@ -134,7 +119,7 @@
                                                 <div class="shop-bottom">
                                                     <ul>
                                                         <li class="price">{{produst_list[3]}}</li>
-                                                        <li class="add"><a href="shop-details.html">ADD +</a></li>
+                                                        <li class="add"><a href="shop_detail">ADD +</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

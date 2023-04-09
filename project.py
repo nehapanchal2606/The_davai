@@ -13,6 +13,9 @@ mysql = MySQL(app)
 @app.route('/', methods=['POST', 'GET'])
 def index():
 	cursor = mysql.connection.cursor()
+	list_p = cursor.execute("SELECT * from product")
+	list_product =  cursor.fetchall()
+	print(list_product)
 	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
 		id INT auto_increment,
 		name VARCHAR(255),
@@ -74,11 +77,12 @@ def index():
 		mysql.connection.commit()
 		cursor.close()
 		return 'Data added'
-	return render_template('index.html')
+	return render_template('index.html', list_product=list_product)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
 	name = ''
+	
 	if request.method == 'POST':
 		cursor = mysql.connection.cursor()
 		username = request.form.get('username')
@@ -87,10 +91,7 @@ def login():
 		#cur = mysql.connection.cursor(MySQLdb.cursors.DictCufrom flask import Flask,render_template,request,session,url_for,redirectrsor)
 		cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s', (username,password,))
 		users = cursor.fetchone()
-		#print('======? ',users[1]);
-
-
-		
+		#print('======? ',users[1]):
 		if users:
 			#print(" -- ",users[0]);
 			# session['id'] = users[0]
@@ -142,6 +143,14 @@ def aboute():
 
 @app.route('/contact', methods=['GET','POST'])
 def contact():
+	cursor = mysql.connection.cursor()
+	if request.method == "POST":
+    	# username = session['id']
+		# print('username', username)
+		cursor.execute()
+
+		message = request.form.get()
+		cursor.execute('INSERT INTO contact VALUES (%s,%s)',(username,message))
 
 	return render_template('contact.html', msg='')
 
@@ -194,9 +203,19 @@ def shop():
 	print(produst_lists)
 	return render_template('shop.html', produst_lists = produst_lists)
 
-@app.route('/shop-detail')
-def shop_detail():
-    return render_template('shop-detail.html')
+@app.route('/shop-detail/<int:id>',
+methods=['GET','POST'])
+def shop_detail(id):
+	cursor = mysql.connection.cursor()
+	get_product_detail = cursor.execute('SELECT * from product WHERE id=%s', (id,))
+	Product_details = cursor.fetchone()
+	print(Product_details,'-->')
+	if request.method == 'POST':
+		
+		pro_qty = request.form.get('productQty')
+		pro_id = request.form.get('id')
+		print(pro_qty,pro_id,"=========>>>>")
+	return render_template('shop-detail.html', Product_details = Product_details )
 	
 if __name__ == '__main__':
     app.run(debug=True)
