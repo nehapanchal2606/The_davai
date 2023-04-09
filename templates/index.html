@@ -16,8 +16,8 @@
                                     <div class="slider-content">
                                         <h4 class="sub-title" data-animation="fadeInUp" data-delay=".3s">top <span>deal !</span></h4>
                                         <h2 class="title" data-animation="fadeInUp" data-delay=".6s">servikal gloves</h2>
-                                        <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
-                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a>
+                                        <!-- <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p> -->
+                                        <!-- <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -30,8 +30,8 @@
                                     <div class="slider-content">
                                         <h4 class="sub-title" data-animation="fadeInUp" data-delay=".3s">top <span>deal !</span></h4>
                                         <h2 class="title" data-animation="fadeInUp" data-delay=".6s">ONLINE PHARMACY</h2>
-                                        <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
-                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a>
+                                        <!-- <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
+                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
                                     <div class="slider-content">
                                         <h4 class="sub-title" data-animation="fadeInUp" data-delay=".3s">top <span>Digital</span></h4>
                                         <h2 class="title" data-animation="fadeInUp" data-delay=".6s">Pressure Monitor</h2>
-                                        <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
-                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a>
+                                        <!-- <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
+                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -58,8 +58,8 @@
                                     <div class="slider-content">
                                         <h4 class="sub-title" data-animation="fadeInUp" data-delay=".3s">top <span>deal !</span></h4>
                                         <h2 class="title" data-animation="fadeInUp" data-delay=".6s">ONLINE PHARMACY</h2>
-                                        <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
-                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a>
+                                        <!-- <p data-animation="fadeInUp" data-delay=".9s">Get up to 50% off Today Only</p>
+                                        <a href="contact.html" class="btn" data-animation="fadeInUp" data-delay="1.2s">contact us</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -199,116 +199,32 @@
                         </div>
                     </div>
                     <div class="row shop-active">
+                        {% for list_products in list_product %}
+
                         <div class="col">
+
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
                                     <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img01.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Sanitizers</span>
-                                    <h5 class="title"> <a href="shop-details.html">Axiom Karela Jamun Juice</a></h5>
+                                    <h5 class="title"> <a href="shop-details.html">{{list_products[1]}}</a></h5>
                                     <div class="shop-item-rating">
-                                        <span class="avg-rating"> 3.2 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
+                                        <!-- <span class="avg-rating"> 3.2 <i class="far fa-star"></i></span>
+                                        <span class="total-rating">349 Ratings</span> -->
                                     </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
+                                    <!-- <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p> -->
                                     <div class="shop-bottom">
                                         <ul>
-                                            <li class="price">$97.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
+                                            <li class="price">{{list_products[3]}}</li>
+                                            <li class="add"><a href="{{ 'shop-detail/' }}{{list_products[0]}}">ADD +</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img02.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Juice</span>
-                                    <h5 class="title"> <a href="shop-details.html">Episoft AC Sunscreen Cream</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.5 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">240 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$370.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img03.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Microscope</span>
-                                    <h5 class="title"> <a href="shop-details.html">Glucon-D Instant Energy</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.2 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$280.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img04.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Mask</span>
-                                    <h5 class="title"> <a href="shop-details.html">Axiom Karela Jamun Juice</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 3.2 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$52.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img05.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Juice</span>
-                                    <h5 class="title"> <a href="shop-details.html">La Shield Sunscreen Gel SPF 40</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.2 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">145 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$45.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
