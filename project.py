@@ -20,8 +20,7 @@ def index():
 		id INT auto_increment,
 		user_id INT,
 		appointment_date DATE,
-		morning_desired BOOLEAN,
-		afternoon_desired BOOLEAN,
+		desired VARCHAR(10),
 		confirmation_requested_by VARCHAR(10),
 		primary key (id)
 	)""")
@@ -92,7 +91,7 @@ def login():
 		#print('======? ',users[1]):
 		if users:
 			#print(" -- ",users[0]);
-			# session['id'] = users[0]
+			session['id'] = users[0]
 			session['username'] = users[1]
 			name = session['username']
 			print("--",name)
@@ -118,29 +117,27 @@ def logout():
 	return redirect('/')
 @app.route('/booking', methods=['GET','POST'])
 def bookingAppointment():
-	
-	
-	if id not in session:
-		return render_template('login.html', msg='')
-	cursor = mysql.connection.cursor()
-	if request.method == 'POST':
-		
-		name = request.form.get('name')
-		email = request.form.get('email')
-		phone = request.form.get('phone')
-		appointment_date = request.form.get('appointment_date')
-		morning_desired = request.form.get('morning_desired')
-		afternoon_desired = request.form.get('afternoon_desired')
-		confirmation_requested_by = request.form.get('confirmation_requested_by')
-		procedure = request.form.get('procedure')
-		print(name,email,phone,appointment_date,morning_desired,afternoon_desired,confirmation_requested_by,"=======>>>>>>>13234")
-		cursor.execute('INSERT INTO bookingapointment VALUES (%s,%s,%s,%s,%s,%s)',(name,email,phone,appointment_date,morning_desired,afternoon_desired,confirmation_requested_by,procedure))
-		mysql.connection.commit()
-		cursor.close()
-		return 'Data added'
+	try:
+		cursor = mysql.connection.cursor()
+		user_id = session['id']
+		fetch = cursor.execute("SELECT * from user where id=%s", (user_id,))
 
-	return render_template('bookingAppointment.html', msg='')
+		fetch_user = cursor.fetchone()
+		if request.method == 'POST':
+			
+			appointment_date = request.form.get('appointment_date')
+			afternoon_desired = request.form.get('desired')
+			confirmation_requested_by = request.form.get('confirmation_requested_by')
+			procedure = request.form.get('procedure')
+			print(appointment_date, afternoon_desired, confirmation_requested_by, procedure)
+			cursor.execute('INSERT INTO bookingapointment (user_id,appointment_date,desired,confirmation_requested_by) VALUES (%s,%s,%s,%s)',(fetch_user[0], appointment_date, afternoon_desired , confirmation_requested_by,))
+			mysql.connection.commit()
+			cursor.close()
+			return redirect('/')
 
+		return render_template('bookingAppointment.html', msg='', fetch_user =fetch_user)
+	execute:
+	 
 @app.route('/about', methods=['GET'])
 def aboute():
 	return render_template('about.html', msg='')
