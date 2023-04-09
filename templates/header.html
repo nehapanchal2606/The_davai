@@ -13,6 +13,8 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
+
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
@@ -116,12 +118,12 @@
                                                 <a href="{{ 'contact' }}"><i class="far fa-user"></i></a>
                                             </li>
                                             <li class="header-shop-cart d-none d-md-flex">
-                                                <a href="#">
+                                                <a href="/cart">
                                                     <img src="img/icon/shape-img.png" alt="">
                                                     <span class="cart-count">0</span>
                                                 </a>
-                                                <span class="cart-price">$0.00</span>
-                                                <ul class="minicart">
+                                                <!-- <span class="cart-price">$0.00</span> -->
+                                                <!-- <ul class="minicart">
                                                     <li class="d-flex align-items-start">
                                                         <div class="cart-img">
                                                             <a href="#"><img src="img/products/cart_p01.jpg" alt=""></a>
@@ -164,7 +166,7 @@
                                                             <a class="black-color" href="#">Checkout</a>
                                                         </div>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </li>
                                         </ul>
                                     </div>
