@@ -118,7 +118,7 @@
                                     <div class="col-5">
                                         <div class="shop-details-content">
                                             <span>hand sanitizer</span>
-                                            <h2 class="title">Axiom Karela Juice</h2>
+                                            <h2 class="title">{{Product_details[1]}}</h2>
                                             <div class="shop-details-review">
                                                 <div class="rating">
                                                     <i class="fas fa-star"></i>
@@ -152,12 +152,14 @@
                                                 </ul>
                                             </div>
                                             <div class="shop-details-quantity">
+                                                <form action="#" method="post">
                                                 <span>Quantity :</span>
                                                 <div class="cart-plus-minus">
-                                                    <input type="text" value="1">
+                                                    <input type="text" name="productQty" value="1">
                                                 </div>
-                                                <a href="shop-details.html" class="wishlist-btn"><i class="fas fa-heart"></i> Add to Wishlist</a>
-                                                <a href="shop-details.html" class="cart-btn">Add to Cart +</a>
+                                                <a href="shop-detail" class="wishlist-btn"><i class="fas fa-heart"></i> Add to Wishlist</a>
+                                                <button type="submit" class="cart-btn">Add to Cart +</button>
+                                                </form>
                                             </div>
                                             <div class="shop-details-bottom">
                                                 <ul>
@@ -210,7 +212,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-8 col-md-7">
-                                                        <h5 class="small-title">100% Axiom Karela Juice</h5>
+                                                        <h5 class="small-title">Axiom</h5>
                                                         <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                         <ul class="product-desc-list">
                                                             <li>65% poly, 35% rayon</li>
@@ -390,7 +392,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="core-features-item mb-30">
                                 <div class="core-features-icon">
-                                    <img src="{{ url_for('static', filename='img/icon/headphone.png') }]" alt="">
+                                    <img src="{{ url_for('static', filename='img/icon/headphone.png') }}" alt="">
                                 </div>
                                 <div class="core-features-content">
                                     <h4 class="title">Quality Support</h4>
