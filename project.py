@@ -13,9 +13,7 @@ mysql = MySQL(app)
 @app.route('/', methods=['POST', 'GET'])
 def index():
 	cursor = mysql.connection.cursor()
-	list_p = cursor.execute("SELECT * from product")
-	list_product =  cursor.fetchall()
-	print(list_product)
+	
 	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
 		id INT auto_increment,
 		user_id INT,
@@ -58,11 +56,14 @@ def index():
 	)""")
 	cursor.execute("""CREATE TABLE IF NOT EXISTS cart (
 		id INT auto_increment,
+		qty INT,
 		pro_id INT,
 		user_id INT,
 		primary key (id)
 	)""")
-	
+	list_p = cursor.execute("SELECT * from product")
+	list_product =  cursor.fetchall()
+	print(list_product)
 	mysql.connection.commit()
 	if request.method == 'POST':
 		username = request.form.get('username')
@@ -87,9 +88,9 @@ def login():
 		#print('======>> ',username, password);
 		#cur = mysql.connection.cursor(MySQLdb.cursors.DictCufrom flask import Flask,render_template,request,session,url_for,redirectrsor)
 		cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s', (username,password,))
-		users = cursor.fetchone()
+		user = cursor.fetchone()
 		#print('======? ',users[1]):
-		if users:
+		if user:
 			#print(" -- ",users[0]);
 			session['id'] = users[0]
 			session['username'] = users[1]
@@ -141,6 +142,15 @@ def bookingAppointment():
 @app.route('/about', methods=['GET'])
 def aboute():
 	return render_template('about.html', msg='')
+@app.route('/cart',methods=['GET','POST'])
+def cart():
+	cursor = mysql.connection.cursor()
+	cursor.execute('SELECT p.name, p.price FROM cart as c JOIN product as p ON c.pro_id = p.id WHERE user_id = %s', (session['id'],))
+	cartdetail = cursor.fetchone()
+	
+	print(cartdetail,"cartdetail")
+    
+	return render_template('cart.html',msg='', cartdetail = cartdetail)	
 
 @app.route('/contact', methods=['GET','POST'])
 def contact():
@@ -210,12 +220,16 @@ def shop_detail(id):
 	cursor = mysql.connection.cursor()
 	get_product_detail = cursor.execute('SELECT * from product WHERE id=%s', (id,))
 	Product_details = cursor.fetchone()
-	print(Product_details,'-->')
+
+	if session.get('id') == False:
+		return render_template('login.html', msg="" )
 	if request.method == 'POST':
 		
 		pro_qty = request.form.get('productQty')
-		pro_id = request.form.get('id')
-		print(pro_qty,pro_id,"=========>>>>")
+		print(session['id'],"userid")
+		cursor.execute('INSERT INTO cart (qty, pro_id, user_id) VALUES (%s,%s,%s)', (pro_qty, Product_details[0],  session['id']))
+		mysql.connection.commit()
+
 	return render_template('shop-detail.html', Product_details = Product_details )
 	
 if __name__ == '__main__':
