@@ -1,4 +1,59 @@
-{% extends 'header.html' %}
+<!-- <form action="SEND ADDRESS" id="ft-form" method="POST" accept-charset="UTF-8">
+    <fieldset>
+      <legend>For person</legend>
+      <label>
+        Name
+        <input type="text" name="name" required>
+      </label>
+      <div class="two-cols">
+        <label>
+          Email address
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Phone number
+          <input type="tel" name="phone">
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Appointment request</legend>
+      <div class="two-cols">
+        <label>
+          Datum
+          <input type="date" name="Appointmentrequest" required>
+        </label>
+        <div class="inline">
+          <label>
+            <input type="hidden" name="Morningdesired" value="no">
+            <input type="checkbox" name="Morning desired" value="yes">
+            Morning
+          </label>
+          <label>
+            <input type="hidden" name="Afternoondesired" value="no">
+            <input type="checkbox" name="Afternoon desired" value="yes">
+            Afternoon
+          </label>
+        </div>
+      </div>
+      <p>Confirmation requested by</p>
+      <div class="inline">
+        <label>
+          <input type="radio" name="ConfirmationRequestedby" value="email" checked>
+          Email
+        </label>
+        <label>
+          <input type="radio" name="ConfirmationRequestedby" value="phone">
+          Phone call
+        </label>
+      </div>
+    </fieldset>
+    <div class="btns">
+      <input type="text" name="_gotcha" value="" style="display:none;">
+      <input type="submit" value="Submit request">
+    </div>
+  </form> -->
+  {% extends 'header.html' %}
 {% block content %}
         <!-- main-area -->
         <main>
@@ -83,7 +138,133 @@
                     <div class="section-area-inner">
                         <div class="row align-items-center">
                             <div class="col-6">
-                                <div class="about-image-wrap">
+                                <h2 class="title">Book Your Appointment</h2></br>
+                              <form action="#" class="contact-form" method="post">
+                                <div class="form-grp">
+                                    <label for="name">Your Name <span>*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Jon Deo...">
+                                </div>
+                                <div class="form-grp">
+                                    <label for="email">Your Email <span>*</span></label>
+                                    <input type="text" name="email" id="email" placeholder="info.example@.com">
+                                </div>
+                                <div class="form-grp">
+                                    <label for="phone">Your Number <span>*</span></label>
+                                    <input type="tel" id="phone" name="phone" placeholder="">
+                                </div>
+                                <div class="form-grp">
+                                  <label for="appointmentDate">Appointment request <span>*</span></label>
+                                  <input type="date" id="appointmentDate" placeholder="" name="appointment_date">
+                              </div>
+                              <div class="form-grp checkbox-grp">
+                                <label>
+                                  <input type="hidden" name="morning_desired" value="no">
+                                  <input type="checkbox" name="morning_desired" value="yes">
+                                  Morning
+                                </label>
+                                <label>
+                                  <input type="hidden" name="afternoon_desired" value="no">
+                                  <input type="checkbox" name="afternoon_desired" value="yes">
+                                  Afternoon
+                                </label>
+                              </div> 
+                              <div class="form-grp radio-grp">
+
+                              <p>Confirmation requested by</p>
+
+                              <label>
+                                <input type="radio" name="confirmation_requested_by" value="email" checked>
+                                Email
+                              </label>
+                              <label>
+                                <input type="radio" name="confirmation_requested_by" value="phone">
+                                Phone call
+                              </label>
+                              </div>
+                              <div class="form-grp option-grp">
+                                <label>
+                                    Which procedure do you want to make an appointment for? 
+                                </label><br>
+                                <select id="procedure" name="procedure" class="form-select">
+                                    <option >Medical Examination</option>
+                                    <option>Doctor Check</option>
+                                    <option>Result Analysis</option>
+                                    <option>Check-up</option>
+
+
+                                </select>
+                              </div>
+                              <!-- <div class="form-grp checkbox-grp">
+                                <label>
+                                  <input type="hidden" name="Morningdesired" value="no">
+                                  <input type="checkbox" name="Morning desired" value="yes">
+                                  Afternoon
+                                </label>
+                              </div> -->
+                                <!-- <input type="date" name="Appointmentrequest" required> -->
+
+                                <!-- <div class="form-grp checkbox-grp">
+                                    <input type="checkbox" id="checkbox">
+                                    <label for="checkbox">Don’t show your email address</label>
+                                </div> -->
+                                <button type="submit" class="btn rounded-btn">Send Now</button>
+                            </form>
+                              <!-- <form action="SEND ADDRESS" id="ft-form" method="POST" accept-charset="UTF-8" class="contact-form">
+                                <fieldset>
+                                  <legend>For person</legend>
+                                  <label>
+                                    Name
+                                    <input type="text" name="name" required>
+                                  </label>
+                                  <div class="two-cols">
+                                    <label>
+                                      Email address
+                                      <input type="email" name="email" required>
+                                    </label>
+                                    <label>
+                                      Phone number
+                                      <input type="tel" name="phone">
+                                    </label>
+                                  </div>
+                                </fieldset>
+                                <fieldset>
+                                  <legend>Appointment request</legend>
+                                  <div class="two-cols">
+                                    <label>
+                                      Datum
+                                      <input type="date" name="Appointmentrequest" required>
+                                    </label>
+                                    <div class="inline">
+                                      <label>
+                                        <input type="hidden" name="Morningdesired" value="no">
+                                        <input type="checkbox" name="Morning desired" value="yes">
+                                        Morning
+                                      </label>
+                                      <label>
+                                        <input type="hidden" name="Afternoondesired" value="no">
+                                        <input type="checkbox" name="Afternoon desired" value="yes">
+                                        Afternoon
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <p>Confirmation requested by</p>
+                                  <div class="inline">
+                                    <label>
+                                      <input type="radio" name="ConfirmationRequestedby" value="email" checked>
+                                      Email
+                                    </label>
+                                    <label>
+                                      <input type="radio" name="ConfirmationRequestedby" value="phone">
+                                      Phone call
+                                    </label>
+                                  </div>
+                                </fieldset>
+                                <div class="btns">
+                                  <input type="text" name="_gotcha" value="" style="display:none;">
+                                  <input type="submit" value="Submit request">
+                                </div>
+                              </form>  -->
+                                <!-- <div class="about-image-wrap">
                                     <div class="about-img-top wow fadeInLeft" data-wow-delay=".2s">
                                         <img src="{{ url_for('static', filename='img/images/about_img01.jpg') }}" alt="">
                                     </div>
@@ -92,7 +273,7 @@
                                     </div>
                                     <img src="{{ url_for('static', filename='img/images/about_shape01.png') }}" alt="" class="about-top-shape">
                                     <img src="{{ url_for('static', filename='img/images/about_shape02.png') }}" alt="" class="about-bottom-shape">
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-6">
                                 <div class="about-content">
