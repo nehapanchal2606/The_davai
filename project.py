@@ -6,7 +6,7 @@ app.secret_key = 'mysecretkey'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'tha_davai_db'
+app.config['MYSQL_DB'] = 'the_davai_db'
 
 mysql = MySQL(app)
 
@@ -15,9 +15,7 @@ def index():
 	cursor = mysql.connection.cursor()
 	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
 		id INT auto_increment,
-		name VARCHAR(255),
-		email VARCHAR(255),	
-		phone VARCHAR(255),
+		user_id INT,
 		appointment_date DATE,
 		morning_desired BOOLEAN,
 		afternoon_desired BOOLEAN,
@@ -119,17 +117,23 @@ def logout():
 	return redirect('/')
 @app.route('/booking', methods=['GET','POST'])
 def bookingAppointment():
+	
+	
+	if id not in session:
+		return render_template('login.html', msg='')
 	cursor = mysql.connection.cursor()
 	if request.method == 'POST':
 		
 		name = request.form.get('name')
 		email = request.form.get('email')
 		phone = request.form.get('phone')
-		appointment_date = request.form.get('Appointmentrequest')
-		morning_desired = request.form.get('Morning desired')
-		afternoon_desired = request.form.get('Afternoon desired')
-		confirmation_requested_by = request.form.get('Confirmation requested by')
-		cursor.execute('INSERT INTO user VALUES (%s,%s,%s,%s,%s,%s)',(username,city,contact,email,password))
+		appointment_date = request.form.get('appointment_date')
+		morning_desired = request.form.get('morning_desired')
+		afternoon_desired = request.form.get('afternoon_desired')
+		confirmation_requested_by = request.form.get('confirmation_requested_by')
+		procedure = request.form.get('procedure')
+		print(name,email,phone,appointment_date,morning_desired,afternoon_desired,confirmation_requested_by,"=======>>>>>>>13234")
+		cursor.execute('INSERT INTO bookingapointment VALUES (%s,%s,%s,%s,%s,%s)',(name,email,phone,appointment_date,morning_desired,afternoon_desired,confirmation_requested_by,procedure))
 		mysql.connection.commit()
 		cursor.close()
 		return 'Data added'
