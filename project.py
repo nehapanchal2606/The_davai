@@ -92,10 +92,10 @@ def login():
 		#print('======? ',users[1]):
 		if user:
 			#print(" -- ",users[0]);
-			session['id'] = users[0]
-			session['username'] = users[1]
+			session['id'] = user[0]
+			session['username'] = user[1]
 			name = session['username']
-			print("--",name)
+			print("--",name) 
 			return redirect('/')
 		else:
 			msg = 'Incorrect username/password.'
@@ -118,7 +118,7 @@ def logout():
 	return redirect('/')
 @app.route('/booking', methods=['GET','POST'])
 def bookingAppointment():
-	try:
+	
 		cursor = mysql.connection.cursor()
 		user_id = session['id']
 		fetch = cursor.execute("SELECT * from user where id=%s", (user_id,))
@@ -137,7 +137,7 @@ def bookingAppointment():
 			return redirect('/')
 
 		return render_template('bookingAppointment.html', msg='', fetch_user =fetch_user)
-	execute:
+	
 	 
 @app.route('/about', methods=['GET'])
 def aboute():
@@ -156,14 +156,14 @@ def cart():
 def contact():
 	cursor = mysql.connection.cursor()
 	if request.method == "POST":
-    	# username = session['id']
+		username = session['id']
 		# print('username', username)
 		cursor.execute()
 
 		message = request.form.get()
 		cursor.execute('INSERT INTO contact VALUES (%s,%s)',(username,message))
 
-	return render_template('contact.html', msg='')
+	return render_template('contact.html')
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -233,4 +233,4 @@ def shop_detail(id):
 	return render_template('shop-detail.html', Product_details = Product_details )
 	
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0',)
