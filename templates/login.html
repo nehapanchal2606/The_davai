@@ -30,6 +30,11 @@
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
+                        <div class="flashes">
+                            {% for message in get_flashed_messages() %}
+                              {{ message }}
+                            {% endfor %}
+                          </div>
                         <h3>Login to account</h3>
                         <p>Access to the most powerfull tool in the entire design and web industry.</p>
                         <form method="post" action="/login">
