@@ -94,7 +94,7 @@ def login():
 		cursor = mysql.connection.cursor()
 		username = request.form.get('username')
 		password = request.form.get('password')
-		print('======>> ',username, password);
+		print('======>> ',username, password)
 		#cur = mysql.connection.cursor(MySQLdb.cursors.DictCufrom flask import Flask,render_template,request,session,url_for,redirectrsor)
 		cursor.execute('SELECT * FROM user where username = %s and password = %s', (username,password,))
 		user = cursor.fetchone()
@@ -157,8 +157,8 @@ def aboute():
 @app.route('/cart',methods=['GET','POST'])
 def cart():
 	cursor = mysql.connection.cursor()
-	cursor.execute('SELECT p.name, p.price FROM cart as c JOIN product as p ON c.pro_id = p.id WHERE user_id = %s', (session['id'],))
-	cartdetail = cursor.fetchone()
+	cursor.execute('SELECT p.name, p.price, c.qty FROM cart as c JOIN product as p ON c.pro_id = p.id WHERE user_id = %s', (session['id'],))
+	cartdetail = cursor.fetchall()
 	
 	print(cartdetail,"cartdetail")
     
@@ -177,7 +177,7 @@ def contact():
 
 		mysql.connection.commit()
 
-		message = Markup("<h2>Your Message is Send</h2>")
+		message = Markup("<h2>Message sent successfully!!</h2>")
 		flash(message)
 		return redirect('/contact')
 
