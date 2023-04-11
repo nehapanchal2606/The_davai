@@ -142,15 +142,15 @@
                               <form action="#" class="contact-form" method="post">
                                 <div class="form-grp">
                                     <label for="name">Your Name <span>*</span></label>
-                                    <input type="text" id="name" value="{{fetch_user[1]}}" placeholder="Jon Deo...">
+                                    <input type="text" id="name" value="{{fetch_user[1]}}" placeholder="Jon Deo..." required>
                                 </div>
                                 <div class="form-grp">
                                     <label for="email">Your Email <span>*</span></label>
-                                    <input type="text" id="email" value="{{fetch_user[4]}}" placeholder="info.example@.com">
+                                    <input type="email" id="email" value="{{fetch_user[4]}}" placeholder="info.example@.com" required>
                                 </div>
                                 <div class="form-grp">
                                     <label for="phone">Your Number <span>*</span></label>
-                                    <input type="tel" id="phone"  value="{{fetch_user[4]}}" placeholder="">
+                                    <input type="tel" id="phone"  value="{{fetch_user[4]}}" placeholder="" required>
                                 </div>
                                 <div class="form-grp">
                                   <label for="appointmentDate">Appointment request <span>*</span></label>
@@ -158,11 +158,11 @@
                               </div>
                               <div class="form-grp checkbox-grp">
                                 <label>
-                                  <input type="checkbox" name="desired" value="Morning" required>
+                                  <input type="checkbox" name="desired" value="Morning">
                                   Morning
                                 </label>
                                 <label>
-                                  <input type="checkbox" name="desired" value="Afternoon" required>
+                                  <input type="checkbox" name="desired" value="Afternoon">
                                   Afternoon
                                 </label>
                               </div> 
@@ -171,11 +171,11 @@
                               <p>Confirmation requested by</p>
 
                               <label>
-                                <input type="radio" name="confirmation_requested_by" value="email" required>
+                                <input type="radio" name="confirmation_requested_by" value="email">
                                 Email
                               </label>
                               <label>
-                                <input type="radio" name="confirmation_requested_by" value="phone" required>
+                                <input type="radio" name="confirmation_requested_by" value="phone">
                                 Phone call
                               </label>
                               </div>

@@ -117,7 +117,7 @@
 						<h2>Shopping Cart</h2>
 						<ol class="breadcrumb p-0 m-0 bg-transparent">
 							<li class="breadcrumb-item"><a href="{{ '/' }}">Home</a></li>
-							<li class="breadcrumb-item"><a href="{{ 'shop' }}">Shop/a></li>
+							<li class="breadcrumb-item"><a href="{{ 'shop' }}">Shop</a></li>
 							<li class="breadcrumb-item active">Cart</li>
 						</ol>
 					</div>
@@ -139,112 +139,51 @@
 							<tr>
 								<th class="text-center" width="100">Image</th>
 								<th class="text-left">Product Name</th>
-								<th class="text-left" width="100">Model</th>
+								<!-- <th class="text-left" width="100">Model</th> -->
 								<th class="text-center" width="200">Quantity</th>
 								<th class="text-right" width="100">Unit Price</th>
 								<th class="text-right" width="120">Total</th>
 							</tr>
 						</thead>
 						<tbody>
+							{% set total = [0] %}
+						{% for pro_list in cartdetail %}
+							{% set _ = total.append(total.pop() + pro_list[1]|int) %}
+							<!-- <p>{{pro_list}}</p> -->
 							<tr>
 								<td class="text-center">
 									<img alt="" class="img-thumbnail p-0 border-0" src="https://via.placeholder.com/50x50" />
 								</td>
 								<td class="text-left">
-									<p class="m-0">HP LP3065</p>
-									<p class="m-0">Delivery Date: 2011-04-22</p>
+									<p class="m-0">{{ pro_list[0]}}</p>
 								</td>
-								<td class="text-left">LP3065</td>
 								<td class="text-center">
-									<div class="input-group">
-										<input type="number" class="form-control text-center" id="" name="" value="1" min="1" max="5" placeholder="Quantity" />
-										<div class="input-group-append">
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-sync-alt"></i></button>
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-times"></i></button>
-										</div>
-									</div>
+									<p class="m-0">{{ pro_list[2]}}</p>
 								</td>
-								<td class="text-right">$122.00</td>
-								<td class="text-right">$122.00</td>
+								<td class="text-right">RS {{ pro_list[1]}}</td>
+								<td class="text-right">RS {{ pro_list[1] *  pro_list[2]}}</td>
+
 							</tr>
-							<tr>
-								<td class="text-center">
-									<img alt="" class="img-thumbnail p-0 border-0" src="https://via.placeholder.com/50x50" />
-								</td>
-								<td class="text-left">
-									<p class="m-0">HP LP3065</p>
-								</td>
-								<td class="text-left">LP3065</td>
-								<td class="text-center">
-									<div class="input-group">
-										<input type="number" class="form-control text-center" id="" name="" value="1" min="1" max="5" placeholder="Quantity" />
-										<div class="input-group-append">
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-sync-alt"></i></button>
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-times"></i></button>
-										</div>
-									</div>
-								</td>
-								<td class="text-right">$122.00</td>
-								<td class="text-right">$122.00</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									<img alt="" class="img-thumbnail p-0 border-0" src="https://via.placeholder.com/50x50" />
-								</td>
-								<td class="text-left">
-									<p class="m-0">HP LP3065</p>
-									<p class="m-0">Reward Points: 300</p>
-								</td>
-								<td class="text-left">LP3065</td>
-								<td class="text-center">
-									<div class="input-group">
-										<input type="number" class="form-control text-center" id="" name="" value="1" min="1" max="5" placeholder="Quantity" />
-										<div class="input-group-append">
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-sync-alt"></i></button>
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-times"></i></button>
-										</div>
-									</div>
-								</td>
-								<td class="text-right">$122.00</td>
-								<td class="text-right">$122.00</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									<img alt="" class="img-thumbnail p-0 border-0" src="https://via.placeholder.com/50x50" />
-								</td>
-								<td class="text-left">
-									<p class="m-0">HP LP3065</p>
-								</td>
-								<td class="text-left">LP3065</td>
-								<td class="text-center">
-									<div class="input-group">
-										<input type="number" class="form-control text-center" id="" name="" value="1" min="1" max="5" placeholder="Quantity" />
-										<div class="input-group-append">
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-sync-alt"></i></button>
-											<button class="btn btn-outline-secondary" type="button"><i class="fas fa-times"></i></button>
-										</div>
-									</div>
-								</td>
-								<td class="text-right">$122.00</td>
-								<td class="text-right">$122.00</td>
-							</tr>
+						{% endfor%}
 						</tbody>
+						
+						
 						<tfoot>
 							<tr>
 								<td class="text-right" colspan="5">Sub-Total</td>
-								<td class="text-right">$100.00</td>
+								<td class="text-right">{{ total[0] }}</td>
 							</tr>
 							<tr>
 								<td class="text-right" colspan="5">Eco Tax (-2.00)</td>
-								<td class="text-right">$2.00</td>
+								<td class="text-right">RS 2.00</td>
 							</tr>
 							<tr>
 								<td class="text-right" colspan="5">VAT (20%)</td>
-								<td class="text-right">$20.00</td>
+								<td class="text-right">RS 20.00</td>
 							</tr>
 							<tr>
 								<td class="text-right" colspan="5"><p class="m-0 h5">Genaral Total</p></td>
-								<td class="text-right"><p class="m-0 h5">$122.00</p></td>
+								<td class="text-right"><p class="m-0 h5">{{ total[0] + 2 + 20}}</p></td>
 							</tr>
 						</tfoot>
 					</table>
@@ -329,7 +268,7 @@
 </div>
 <div class="container">
 	<div class="row mb-5">
-		<div class="col-md-2">
+		<!-- <div class="col-md-2">
 			<div class="card">
 				<div class="card-header">Corporate</div>
 				<ul class="list-group list-group-flush">
@@ -340,8 +279,8 @@
 					<li class="list-group-item p-2">Contact Us</li>
 				</ul>
 			</div>
-		</div>
-		<div class="col-md-2">
+		</div> -->
+		<!-- <div class="col-md-2">
 			<div class="card">
 				<div class="card-header">Services</div>
 				<ul class="list-group list-group-flush">
@@ -352,8 +291,8 @@
 					<li class="list-group-item p-2">Returns</li>
 				</ul>
 			</div>
-		</div>
-		<div class="col-md-2">
+		</div> -->
+		<!-- <div class="col-md-2">
 			<div class="card">
 				<div class="card-header">Account</div>
 				<ul class="list-group list-group-flush">
@@ -364,8 +303,8 @@
 					<li class="list-group-item p-2">Wish List</li>
 				</ul>
 			</div>
-		</div>
-		<div class="col-md-2">
+		</div> -->
+		<!-- <div class="col-md-2">
 			<div class="card">
 				<div class="card-header">Support</div>
 				<ul class="list-group list-group-flush">
@@ -374,8 +313,8 @@
 					<li class="list-group-item p-2">Feedback</li>
 				</ul>
 			</div>
-		</div>
-		<div class="col-md-4">
+		</div> -->
+		<!-- <div class="col-md-4">
 			<div class="card">
 				<div class="card-header">Contact Us</div>
 				<div class="card-body">
@@ -386,7 +325,7 @@
 					<p>Call: 1-800-345-6789</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="col-md-12 mt-5 mb-5">
 			<div class="card">
 				<div class="card-body">
