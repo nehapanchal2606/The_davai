@@ -268,7 +268,7 @@
                             <div class="deal-week-item">
                                 <div class="deal-week-inner">
                                     <div class="deal-week-thumb">
-                                        <img src="img/products/deal_week_img01.jpg" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/deal_week_img01.jpg') }}" alt="">
                                     </div>
                                     <div class="deal-week-content">
                                         <span>medical</span>
@@ -280,7 +280,7 @@
                             <div class="deal-week-item">
                                 <div class="deal-week-inner">
                                     <div class="deal-week-thumb">
-                                        <img src="img/products/deal_week_img02.jpg" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/deal_week_img02.jpg') }}" alt="">
                                     </div>
                                     <div class="deal-week-content">
                                         <span>medical</span>
@@ -299,8 +299,8 @@
                                         <a href="shop.html" class="btn">shop now</a>
                                     </div>
                                     <div class="deal-week-thumb">
-                                        <img src="img/products/deal_week_img03.jpg" class="main-img" alt="">
-                                        <img src="img/products/dw_item_des.png" class="discount-img" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/deal_week_img03.jpg') }}" class="main-img" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/dw_item_des.png') }}" class="discount-img" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@
                             <div class="deal-week-item">
                                 <div class="deal-week-inner">
                                     <div class="deal-week-thumb">
-                                        <img src="img/products/deal_week_img04.jpg" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/deal_week_img04.jpg') }}" alt="">
                                     </div>
                                     <div class="deal-week-content">
                                         <span>covid-19</span>
@@ -321,7 +321,7 @@
                             <div class="deal-week-item">
                                 <div class="deal-week-inner">
                                     <div class="deal-week-thumb">
-                                        <img src="img/products/deal_week_img05.jpg" alt="">
+                                        <img src="{{ url_for('static', filename='img/products/deal_week_img05.jpg') }}" alt="">
                                     </div>
                                     <div class="deal-week-content">
                                         <span>medical pack</span>
@@ -360,7 +360,7 @@
                         <div class="col grid-item grid-sizer cat-two">
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img01.jpg" alt=""></a>
+                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img01.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Sanitizers</span>
@@ -382,7 +382,7 @@
                         <div class="col grid-item grid-sizer cat-one">
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img02.jpg" alt=""></a>
+                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img02.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Juice</span>
@@ -404,7 +404,7 @@
                         <div class="col grid-item grid-sizer cat-two cat-one">
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img03.jpg" alt=""></a>
+                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img03.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Microscope</span>
@@ -426,7 +426,7 @@
                         <div class="col grid-item grid-sizer cat-one cat-two">
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img04.jpg" alt=""></a>
+                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img04.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Mask</span>
@@ -448,7 +448,7 @@
                         <div class="col grid-item grid-sizer cat-one">
                             <div class="shop-item mb-60">
                                 <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img05.jpg" alt=""></a>
+                                    <a href="shop-details.html"><img src="{{ url_for('static', filename='img/products/shop_img05.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="shop-content">
                                     <span class="cat">Juice</span>
@@ -467,116 +467,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col grid-item grid-sizer cat-two">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img06.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Sanitizers</span>
-                                    <h5 class="title"><a href="shop-details.html">Axiom Karela Jamun Juice</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 3.2 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$97.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col grid-item grid-sizer cat-one">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img07.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Juice</span>
-                                    <h5 class="title"><a href="shop-details.html">Episoft AC Sunscreen Cream</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.5 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$370.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col grid-item grid-sizer cat-one cat-two">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img08.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Microscope</span>
-                                    <h5 class="title"><a href="shop-details.html">Glucon-D Instant Energy</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.5 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$280.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col grid-item grid-sizer cat-two">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img09.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Mask</span>
-                                    <h5 class="title"><a href="shop-details.html">Axiom Karela Jamun Juice</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.5 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$190.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col grid-item grid-sizer cat-one cat-two">
-                            <div class="shop-item mb-60">
-                                <div class="shop-thumb">
-                                    <a href="shop-details.html"><img src="img/products/shop_img10.jpg" alt=""></a>
-                                </div>
-                                <div class="shop-content">
-                                    <span class="cat">Juice</span>
-                                    <h5 class="title"><a href="shop-details.html">La Shield Sunscreen Gel SPF 40</a></h5>
-                                    <div class="shop-item-rating">
-                                        <span class="avg-rating"> 4.5 <i class="far fa-star"></i></span>
-                                        <span class="total-rating">349 Ratings</span>
-                                    </div>
-                                    <p class="shop-discount">MRP <del>$300</del> <span class="discount-off">6% OFF</span></p>
-                                    <div class="shop-bottom">
-                                        <ul>
-                                            <li class="price">$29.00</li>
-                                            <li class="add"><a href="shop-details.html">ADD +</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -761,7 +652,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="core-features-item mb-30">
                                 <div class="core-features-icon">
-                                    <img src="img/icon/delivery.png" alt="">
+                                    <img src="{{ url_for('static', filename='img/icon/delivery.png') }}" alt="">
                                 </div>
                                 <div class="core-features-content">
                                     <h4 class="title">Home Delivery</h4>
@@ -772,7 +663,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="core-features-item mb-30">
                                 <div class="core-features-icon">
-                                    <img src="img/icon/return.png" alt="">
+                                    <img src="{{ url_for('static', filename='img/icon/return.png') }}" alt="">
                                 </div>
                                 <div class="core-features-content">
                                     <h4 class="title">Click and Pick</h4>
@@ -783,7 +674,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="core-features-item mb-30">
                                 <div class="core-features-icon">
-                                    <img src="img/icon/headphone.png" alt="">
+                                    <img src="{{ url_for('static', filename='img/icon/headphone.png') }}" alt="">
                                 </div>
                                 <div class="core-features-content">
                                     <h4 class="title">Quality Support</h4>

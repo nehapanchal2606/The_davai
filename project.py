@@ -6,14 +6,16 @@ app.secret_key = 'mysecretkey'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'the_davai_db'
+app.config['MYSQL_DB'] = 'tha_davai_db'
 
 mysql = MySQL(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+	# database connection
 	cursor = mysql.connection.cursor()
 	
+	# SQL query for create data tables
 	cursor.execute("""CREATE TABLE IF NOT EXISTS bookingApointment (
 		id INT auto_increment,
 		user_id INT,
@@ -54,6 +56,13 @@ def index():
 		price INT,
 		primary key (id)
 	)""")
+	cursor.execute("""CREATE TABLE IF NOT EXISTS contact (
+		id INT auto_increment,
+		name VARCHAR(50),
+		email VARCHAR(50),
+		message TEXT,
+		primary key (id)
+	)""")
 	cursor.execute("""CREATE TABLE IF NOT EXISTS cart (
 		id INT auto_increment,
 		qty INT,
@@ -61,6 +70,8 @@ def index():
 		user_id INT,
 		primary key (id)
 	)""")
+
+
 	list_p = cursor.execute("SELECT * from product")
 	list_product =  cursor.fetchall()
 	print(list_product)
@@ -79,17 +90,15 @@ def index():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-	name = ''
-	
 	if request.method == 'POST':
 		cursor = mysql.connection.cursor()
 		username = request.form.get('username')
 		password = request.form.get('password')
-		#print('======>> ',username, password);
+		print('======>> ',username, password);
 		#cur = mysql.connection.cursor(MySQLdb.cursors.DictCufrom flask import Flask,render_template,request,session,url_for,redirectrsor)
-		cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s', (username,password,))
+		cursor.execute('SELECT * FROM user where username = %s and password = %s', (username,password,))
 		user = cursor.fetchone()
-		#print('======? ',users[1]):
+		print('======? ',user)
 		if user:
 			#print(" -- ",users[0]);
 			session['id'] = user[0]
@@ -99,15 +108,8 @@ def login():
 			return redirect('/')
 		else:
 			msg = 'Incorrect username/password.'
+	return render_template('login.html')
 		
-
-		return render_template('login.html',msg=msg)
-
-	if 'id' in session:
-		return redirect('home')
-
-
-	return render_template('login.html', msg='')
 
 
 @app.route('/logout', methods=['GET'])
@@ -118,26 +120,36 @@ def logout():
 	return redirect('/')
 @app.route('/booking', methods=['GET','POST'])
 def bookingAppointment():
+    	
+		try:
 	
-		cursor = mysql.connection.cursor()
-		user_id = session['id']
-		fetch = cursor.execute("SELECT * from user where id=%s", (user_id,))
+			cursor = mysql.connection.cursor()
+			user_id = session['id']
+			fetch = cursor.execute("SELECT * from user where id=%s", (user_id,))
 
-		fetch_user = cursor.fetchone()
-		if request.method == 'POST':
+			fetch_user = cursor.fetchone()
+
+
 			
-			appointment_date = request.form.get('appointment_date')
-			afternoon_desired = request.form.get('desired')
-			confirmation_requested_by = request.form.get('confirmation_requested_by')
-			procedure = request.form.get('procedure')
-			print(appointment_date, afternoon_desired, confirmation_requested_by, procedure)
-			cursor.execute('INSERT INTO bookingapointment (user_id,appointment_date,desired,confirmation_requested_by) VALUES (%s,%s,%s,%s)',(fetch_user[0], appointment_date, afternoon_desired , confirmation_requested_by,))
-			mysql.connection.commit()
-			cursor.close()
-			return redirect('/')
+			if request.method == 'POST':
+				
+				appointment_date = request.form.get('appointment_date')
+				afternoon_desired = request.form.get('desired')
+				confirmation_requested_by = request.form.get('confirmation_requested_by')
+				procedure = request.form.get('procedure')
+				print(appointment_date, afternoon_desired, confirmation_requested_by, procedure)
+				cursor.execute('INSERT INTO bookingapointment (user_id,appointment_date,desired,confirmation_requested_by) VALUES (%s,%s,%s,%s)',(fetch_user[0], appointment_date, afternoon_desired , confirmation_requested_by,))
+				mysql.connection.commit()
+				cursor.close()
+				return redirect('/')
 
-		return render_template('bookingAppointment.html', msg='', fetch_user =fetch_user)
-	
+			return render_template('bookingAppointment.html', msg='', fetch_user =fetch_user)
+		except:
+			message = Markup("<h2>First You have to Login</h2>")
+			flash(message)
+			return render_template('login.html', mesage = message)
+
+
 	 
 @app.route('/about', methods=['GET'])
 def aboute():
@@ -154,16 +166,22 @@ def cart():
 
 @app.route('/contact', methods=['GET','POST'])
 def contact():
+	message  = None
 	cursor = mysql.connection.cursor()
-	if request.method == "POST":
-		username = session['id']
-		# print('username', username)
-		cursor.execute()
+	if request.method == 'POST':
+		name = request.form.get('name')
+		email = request.form.get('email')
+		message = request.form.get('message')
 
-		message = request.form.get()
-		cursor.execute('INSERT INTO contact VALUES (%s,%s)',(username,message))
+		cursor.execute('Insert into contact (name, email, message) VALUES(%s,%s,%s)', (name,email,message))
 
-	return render_template('contact.html')
+		mysql.connection.commit()
+
+		message = Markup("<h2>Your Message is Send</h2>")
+		flash(message)
+		return redirect('/contact')
+
+	return render_template('contact.html' , message = message)
 
 @app.route('/register',methods=['GET','POST'])
 def register():

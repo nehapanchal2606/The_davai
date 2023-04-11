@@ -3,12 +3,13 @@
 
         <!-- main-area -->
         <main>
-
-            <!-- map-area -->
-            <div id="map-bg">
-                <div class="map-marker ripple-white"><i class="fas fa-map-pin"></i></div>
-            </div>
-            <!-- map-area-end -->
+            <center>
+            <div class="flashes">
+                {% for message in get_flashed_messages() %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            </center>
 
             <!-- contact-area -->
             <section class="contact-area pt-100 pb-100">
@@ -22,24 +23,24 @@
                                 </div>
                                 <div class="contact-wrap-content">
                                     <p>The domestic dog is a doiated dendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey.</p>
-                                    <form action="#" class="contact-form">
+                                    <form action="{{ 'contact' }}" method="post" class="contact-form">
                                         <div class="form-grp">
                                             <label for="name">Your Name <span>*</span></label>
-                                            <input type="text" id="name" placeholder="Jon Deo...">
+                                            <input type="text" name="name" id="name" placeholder="Jon Deo...">
                                         </div>
                                         <div class="form-grp">
                                             <label for="email">Your Email <span>*</span></label>
-                                            <input type="text" id="email" placeholder="info.example@.com">
+                                            <input type="text" name="email" id="email" placeholder="info.example@.com">
                                         </div>
                                         <div class="form-grp">
                                             <label for="message">Your Message <span>*</span></label>
-                                            <textarea name="message" id="message" placeholder="Opinion..."></textarea>
+                                            <textarea name="message" name="message" id="message" placeholder="Opinion..."></textarea>
                                         </div>
                                         <div class="form-grp checkbox-grp">
                                             <input type="checkbox" id="checkbox">
                                             <label for="checkbox">Don’t show your email address</label>
                                         </div>
-                                        <button type="button" class="btn rounded-btn">Send Now</button>
+                                        <button type="submit" class="btn rounded-btn">Send Now</button>
                                     </form>
                                 </div>
                             </div>
