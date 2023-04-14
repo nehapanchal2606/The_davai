@@ -3510,6 +3510,7 @@ label {
     display: flex;
     align-items: flex-start;
     margin-bottom: 35px;
+    margin-right:5px
 }
 .contact-form .checkbox-grp input,
 .comment-reply-form .checkbox-grp input {
@@ -3524,6 +3525,7 @@ label {
     color: #676666;
     opacity: .8;
     margin-bottom: 0;
+    margin-right: 5px;
     user-select: none;
 }
 .contact-form [type=button] {
